@@ -21,9 +21,11 @@ import br.com.saulo.address.dto.responses.AddressResponse;
 import br.com.saulo.address.entidades.AddressEntidade;
 import br.com.saulo.address.servicos.AddressServico;
 import br.com.saulo.address.ultil.GenericConvert;
+import io.swagger.annotations.Api;
 
 @RestController
-@RequestMapping(value = "/address", produces = MediaType.APPLICATION_JSON_VALUE)
+@Api(tags = "address")
+@RequestMapping(value = "/api/address", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AddressResource {
 	
 	 	@Autowired
