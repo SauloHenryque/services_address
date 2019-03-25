@@ -1,5 +1,8 @@
 package br.com.saulo.address.servicos;
 
+import static br.com.saulo.address.exception.ExceptionOrder.checkThrow;
+import static br.com.saulo.address.exception.ExceptionsMessagesEnum.REGISTRO_NAO_ENCONTRADO;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +54,7 @@ public class AddressServico {
 	
 	
 	/**
-	 * Método responsável pela edição da store.
+	 * Método responsável pela edição da address.
 	 *  
 	 * @param storeEntidade <br/>
 	 *                   Objeto que representa a requisição
@@ -61,6 +64,7 @@ public class AddressServico {
 	 */
 	public AddressEntidade atualizarAddress(AddressEntidade addressEntidade) {
 		
+		checkThrow(!addressRepositorio.existsById(addressEntidade.getId()), REGISTRO_NAO_ENCONTRADO);
 		return addressRepositorio.save(addressEntidade);
 	} 
 	
@@ -74,6 +78,7 @@ public class AddressServico {
 	 */
     public void deletarAddress(long id) {
     	
+		checkThrow(!addressRepositorio.existsById(id), REGISTRO_NAO_ENCONTRADO);
     	AddressEntidade storeEntidade = addressRepositorio.findById(id);
     	addressRepositorio.delete(storeEntidade);
     }
