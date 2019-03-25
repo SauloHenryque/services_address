@@ -59,10 +59,10 @@ public class AddressEntidade implements Serializable {
     private String pais;
     
     @Column(name = "ID_STORE")
-    private String id_store;
+    private Long id_store;
     
     @Column(name = "ID_ORDER")
-    private String id_order;
+    private Long id_order;
     
 
 }
